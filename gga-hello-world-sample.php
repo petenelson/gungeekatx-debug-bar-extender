@@ -12,8 +12,7 @@ define('GGA_DEBUG_ACTION', 'gga_hello_world_debug');
 
 // Hook into the Debug Bar's filter to add a new tab
 add_filter( 'debug_bar_panels', 'gga_hello_world_sample_panel_insert' );
-function gga_hello_world_sample_panel_insert( $panels ) 
-{
+function gga_hello_world_sample_panel_insert( $panels ) {
 	// Pass in the new Debug Bar tab name and the do_action you want to call
 	if (class_exists('GunGeekATX_DebugBarExtender'))
 		$panels[] = new GunGeekATX_DebugBarExtender('GGA Hello World', GGA_DEBUG_ACTION);
@@ -23,8 +22,7 @@ function gga_hello_world_sample_panel_insert( $panels )
 
 // init code for our sample plugin
 add_action('init', 'gga_hello_world_init');
-function gga_hello_world_init()
-{
+function gga_hello_world_init() {
 
 	// log that the init was called
 	$start = microtime();
@@ -40,8 +38,7 @@ function gga_hello_world_init()
 
 // shortcode handler for our sample plugin
 add_shortcode('gga_hello_world', 'gga_hello_world_shortcode_handler');
-function gga_hello_world_shortcode_handler($atts)
-{
+function gga_hello_world_shortcode_handler($atts) {
 	// dump the shortcode attributes to the Debug Bar
 	do_action(GGA_DEBUG_ACTION, 'passed atts', var_export($atts, true));	
 
